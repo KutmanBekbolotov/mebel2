@@ -33,7 +33,6 @@ public class ResultService implements ResultMapper {
         System.out.println(pHeight*pWidth);
         System.out.println((dHeight*dWidth+5)*dQuantity);
         return new ResultDto(pHeight*pWidth/((dHeight*dWidth+5)*dQuantity));
-
     }
 
     @Override

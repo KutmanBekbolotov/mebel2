@@ -24,8 +24,6 @@ public class WorkerService implements WorkerMapper {
     public Optional<Worker>findByUsername(String username){
         return workerRepository.findUserByUsername(username);
     }
-
-
     @Override
     public Worker toEntity(WorkerDto workerDto) {
         return modelMapper.map(workerDto, Worker.class);

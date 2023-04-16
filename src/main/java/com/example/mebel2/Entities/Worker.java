@@ -21,8 +21,7 @@ public class Worker{
     Long id;
     String username;
     String password;
-//    @Enumerated(EnumType.STRING)
-//    WORKER_ROLE workerRole;
-    String role;
+    @Enumerated(EnumType.STRING)
+    WORKER_ROLE role;
 
 }

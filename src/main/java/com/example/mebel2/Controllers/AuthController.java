@@ -60,11 +60,6 @@ public class AuthController {
             message = "User by this username exists";
             return Map.of(worker.getUsername(), message);
         }
-        //Проверяет подходящие ли роли!
-        if(!(workerDto.getRole().equals("ROLE_ADMIN")) && ! (workerDto.getRole().equals("ROLE_Worker"))){
-            message = "Wrong type of role!";
-            return Map.of(worker.getRole(), message);
-        }
         registrationService.register(worker);
         //Если все норм то токен выдает!
         message = jwtUtil.generateToken(worker.getUsername());
