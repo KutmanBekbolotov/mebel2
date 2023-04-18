@@ -24,6 +24,9 @@ public class Model {
     String description;
     String name;
     LocalDate localDate;
+    @ManyToOne
+    @JoinColumn(name = "paper_id",nullable = true)
+    Paper paper;
 
     public Model(int width, int height, LocalDate localDate) {
         this.width = width;

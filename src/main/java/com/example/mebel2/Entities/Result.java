@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Data
@@ -13,6 +14,8 @@ public class Result {
     Long id;
     int quantity;
     LocalDate localDate = LocalDate.now();
+
+
 
 
 }

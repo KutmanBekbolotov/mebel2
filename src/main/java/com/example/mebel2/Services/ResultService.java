@@ -23,11 +23,10 @@ public class ResultService implements ResultMapper {
         return new ResultDto(paperDto.getWidth()* paperDto.getHeight()/(detailDto.getWidth()*detailDto.getHeight()+5));
 
     }
+
     public Result save(Result result){
         return resultRepository.save(result);
     }
-
-
 
     public ResultDto calculate(int dWidth, int dHeight, int pWidth, int pHeight, int dQuantity){
         System.out.println(pHeight*pWidth);

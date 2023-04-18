@@ -20,7 +20,7 @@ public class PaperController {
     }
     @GetMapping("/paper/formats")
     public List<FormatEnum> formatEnums(){
-        return List.of(FormatEnum.LPSD,FormatEnum.PDF, FormatEnum.PDFBIG,FormatEnum.Vacuum);
+        return List.of(FormatEnum.LPSD,FormatEnum.PDF, FormatEnum.PDFBIG,FormatEnum.Vacuum, FormatEnum.MDFRASPIL, FormatEnum.ErgerorList, FormatEnum.Table, FormatEnum.BigTable);
     }
     @PostMapping("/save/paper")
     public Paper saved(@RequestBody Paper paper){

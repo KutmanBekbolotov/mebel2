@@ -55,7 +55,7 @@ public class AuthController {
             message = messageSource.getMessage(fieldError,null);
             return Map.of("message: ", message);
         }
-        //Проверяет нет такого человека уже
+        //Проверяет нет ли такого человека уже
         if(workerService.findByUsername(worker.getUsername()).isPresent()) {
             message = "User by this username exists";
             return Map.of(worker.getUsername(), message);

@@ -19,6 +19,12 @@ public class Detail {
     @Positive(message = "Quantity must be greater than 0")
     int quantity;
     String description;
+    @ManyToOne
+    @JoinColumn(name = "paper_id",nullable = true)
+    Paper paper;
+    @ManyToOne
+    @JoinColumn(name = "worker_id",nullable = true)
+    Worker worker;
 
 
 }
