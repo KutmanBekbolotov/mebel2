@@ -3,9 +3,12 @@ package com.example.mebel2.Services;
 import com.example.mebel2.Dto.Input.DetailDto;
 import com.example.mebel2.Entities.Detail;
 import com.example.mebel2.Entities.Paper;
+import com.example.mebel2.Entities.Result;
+import com.example.mebel2.Entities.Worker;
 import com.example.mebel2.Exceptions.exceptions.PaperNotFoundException;
 import com.example.mebel2.Repositories.DetailRepository;
 import com.example.mebel2.Repositories.PaperRepository;
+import com.example.mebel2.Repositories.ResultRepository;
 import com.example.mebel2.Services.Mappers.DetailMapper;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -21,22 +24,25 @@ public class DetailService implements DetailMapper {
     DetailRepository detailRepository;
     ModelMapper modelMapper;
     PaperRepository paperRepository;
+    ResultRepository resultRepository;
 
-    public Detail save(Detail detail ,Long paper_id) {
-        Optional<Paper> optionalPaper = paperRepository.findById(paper_id);
-        if(optionalPaper.isEmpty()){
+    public Detail save(DetailDto detailDto ,Long result_id) {
+        Optional<Result> optionalResult = resultRepository.findById(result_id);
+        if(optionalResult.isEmpty()){
             throw new PaperNotFoundException("Нет такого листа!");
         }
+        Detail detail = toEntity(detailDto);
+        detail.setResult(optionalResult.get());
         return detailRepository.save(detail);
     }
-    public String saved(List<Detail> detailList, Long paper_id){
+    public String saved(List<DetailDto> detailList, Long result_id){
         detailList.forEach(detail -> {
-            save(detail, paper_id);
+            save(detail, result_id);
         });
         return "Saved all!";
     }
-    public List<Detail> findDetailsByPaper(Paper paper){
-        return detailRepository.findDetailByPaper(paper);
+    public List<Detail> findDetailsByResult(Result result){
+        return detailRepository.findDetailByResult(result);
     }
 
     public List<Detail> findAll(){

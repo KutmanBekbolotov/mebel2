@@ -12,5 +12,6 @@ public class DetailDto {
     int height;
     @Positive(message = "Quantity must be greater than 0")
     int quantity;
+    String description;
 
 }

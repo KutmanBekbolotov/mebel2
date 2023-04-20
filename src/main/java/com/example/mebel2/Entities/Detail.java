@@ -1,12 +1,16 @@
 package com.example.mebel2.Entities;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.Positive;
 
 @Entity
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "tb_detail")
 public class Detail {
     @Id
@@ -20,11 +24,19 @@ public class Detail {
     int quantity;
     String description;
     @ManyToOne
-    @JoinColumn(name = "paper_id",nullable = true)
-    Paper paper;
-    @ManyToOne
-    @JoinColumn(name = "worker_id",nullable = true)
-    Worker worker;
+    @JoinColumn(name = "result_id")
+    Result result;
 
+    public Detail(int width, int height, int quantity) {
+        this.width = width;
+        this.height = height;
+        this.quantity = quantity;
+    }
 
+    public Detail(int width, int height, int quantity, String description) {
+        this.width = width;
+        this.height = height;
+        this.quantity = quantity;
+        this.description = description;
+    }
 }

@@ -1,5 +1,6 @@
 package com.example.mebel2.Configuration;
 
+import com.example.mebel2.Enums.WORKER_ROLE;
 import com.example.mebel2.Security.WorkerDetailsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -38,6 +39,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 cors().and()
                 .csrf().disable()
                 .authorizeRequests()
+                .antMatchers("api/v1/protected/**").hasAnyRole(WORKER_ROLE.ROLE_ADMIN.toString())
                 .antMatchers("/api/v1/open/**","/swagger-ui/**","/swagger-ui.html", "/v3/api-docs/**", "/auth/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
@@ -56,7 +58,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Arrays.asList("http://localhost:3000","http://localhost:3001"));
+        configuration.setAllowedOrigins(Arrays.asList("http://localhost:3000","http://localhost:3001","https://03be-95-87-73-114.ngrok-free.app"));
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE"));
         configuration.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type"));
         configuration.setAllowCredentials(true);

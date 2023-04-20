@@ -1,3 +1,6 @@
+package com.example.mebel.MebelTestJava;
+
+import com.example.mebel2.Entities.Result;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -15,7 +18,7 @@ public class ResultTest {
     }
 
     @Test
-    //cheking getters & setters
+    //checking getters & setters
     
     public void testSetAndGetQuantity() {
 
