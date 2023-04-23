@@ -24,7 +24,7 @@ jobs:
         uses: easingthemes/ssh-deploy@v2.1.5
         with:
             ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
-            remote_host: http://46.8.43.42:8080
+            remote_host: 46.8.43.42:8080
             remote_user: root
 #             remote_port: 8080 # (optional)
             source: target/mebel2-0.0.1-SNAPSHOT.jar
