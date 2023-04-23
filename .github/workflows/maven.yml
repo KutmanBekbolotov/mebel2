@@ -23,10 +23,10 @@ jobs:
       - name: Deploy to server
         uses: easingthemes/ssh-deploy@v2.1.5
         with:
-            ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-            remote-host: http://46.8.43.42
-            remote-user: root
-            remote-port: 8080 # (optional)
+            ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
+            remote_host: http://46.8.43.42
+            remote_user: root
+            remote_port: 8080 # (optional)
             source: target/mebel2-0.0.1-SNAPSHOT.jar
             target: http://46.8.43.42/root/Programmer
             args: -rltgoDzvO # (optional)
