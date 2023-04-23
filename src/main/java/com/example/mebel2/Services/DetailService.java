@@ -32,7 +32,8 @@ public class DetailService implements DetailMapper {
             throw new PaperNotFoundException("Нет такого листа!");
         }
         Detail detail = toEntity(detailDto);
-        detail.setResult(optionalResult.get());
+        Result result = optionalResult.get();
+        detail.setResult(result);
         return detailRepository.save(detail);
     }
     public String saved(List<DetailDto> detailList, Long result_id){

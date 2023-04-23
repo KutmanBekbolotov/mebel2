@@ -18,22 +18,13 @@ import java.util.List;
 public class PaperController {
     PaperService paperService;
     @GetMapping("/paper/all")
-    @CrossOrigin(origins = {"http://localhost:3000", "http://localhost:3001", "*"})
-    public List<PaperProjection> findAll(){
-        return paperService.findAllProjections();
+    @CrossOrigin(origins = {"http://localhost:3000", "http://localhost:3001","http://46.8.43.42:3000" ,"*"})
+    public List<Paper> findAll(){
+        return paperService.findAll();
     }
-//    @GetMapping("/paper/formats")
-//    public List<Serializable> formatEnums(){
-//        List<FormatEnum> formatEnums = List.of(FormatEnum.values());
-//        List<String> values = new ArrayList<>();
-//        for (FormatEnum format:formatEnums
-//             ) {
-//            values.add(format.get)
-//        }
-//        return List.of(Arrays.stream(FormatEnum.values()).iterator().getClass);
-//    }
+
     @PostMapping("/save/paper")
-    @CrossOrigin(origins = {"http://localhost:3000", "http://localhost:3001", "*"})
+    @CrossOrigin(origins = {"http://localhost:3000", "http://localhost:3001","http://46.8.43.42:3000" ,"*"})
     public Paper saved(@RequestBody Paper paper){
         return paperService.save(paper);
     }

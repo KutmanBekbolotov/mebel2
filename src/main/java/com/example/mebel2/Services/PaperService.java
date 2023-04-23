@@ -28,5 +28,7 @@ public class PaperService {
         return optionalPaper.get();
 
     }
-
+    public List<Paper>findAll(){
+        return paperRepository.findAll();
+    }
 }

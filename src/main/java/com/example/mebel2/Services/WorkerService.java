@@ -2,6 +2,7 @@ package com.example.mebel2.Services;
 
 import com.example.mebel2.Dto.Input.WorkerDto;
 import com.example.mebel2.Entities.Worker;
+import com.example.mebel2.Exceptions.exceptions.MainException;
 import com.example.mebel2.Repositories.WorkerRepository;
 import com.example.mebel2.Services.Mappers.WorkerMapper;
 import lombok.AllArgsConstructor;
@@ -23,6 +24,13 @@ public class WorkerService implements WorkerMapper {
 
     public Optional<Worker>findByUsername(String username){
         return workerRepository.findUserByUsername(username);
+    }
+    public WorkerDto findById(Long id){
+        Optional<Worker> optionalWorker = workerRepository.findById(id);
+        if(optionalWorker.isEmpty()){
+            throw new MainException("Нет такого человека!");
+        }
+        return toDto(optionalWorker.get());
     }
     @Override
     public Worker toEntity(WorkerDto workerDto) {

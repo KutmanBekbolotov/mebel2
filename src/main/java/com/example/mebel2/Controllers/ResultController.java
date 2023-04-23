@@ -16,24 +16,22 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("/api/v1/open")
+@RequestMapping("/api/v1/authenticated")
 public class ResultController{
     ResultService resultService;
     RegistrationService registrationService;
     PaperService paperService;
     DetailService detailService;
     @PostMapping("/result/make/{paper_id}")
-    @CrossOrigin(origins = {"http://localhost:3000", "http://localhost:3001", "*"})
+    @CrossOrigin(origins = {"http://localhost:3000", "http://localhost:3001","http://46.8.43.42:3000" ,"*"})
     public Result resulter(@RequestBody List<DetailDto> detailList, @PathVariable Long paper_id){
-         Result result   = resultService.count(detailList,paperService.findById(paper_id));
+         Result result = resultService.count(detailList,paperService.findById(paper_id));
          resultService.save(result);
         detailService.saved(detailList, result.getId());
         return result;
-
     }
-
     @GetMapping("/result/list")
-    @CrossOrigin(origins = {"http://localhost:3000", "http://localhost:3001", "*"})
+    @CrossOrigin(origins = {"http://localhost:3000", "http://localhost:3001","http://46.8.43.42:3000" ,"*"})
     public List<Result> resultList(){
         return resultService.findAll();
     }

@@ -22,6 +22,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class ResultService implements ResultMapper {
     ResultRepository resultRepository;
     ModelMapper modelMapper;
+    RegistrationService registrationService;
     public ResultDto calculate(PaperDto paperDto, DetailDto detailDto){
         System.out.println(paperDto.getHeight()*paperDto.getWidth());
         System.out.println(detailDto.getHeight()*detailDto.getWidth()+5);
@@ -47,15 +48,23 @@ public class ResultService implements ResultMapper {
         return new ResultDto(pHeight*pWidth/((dHeight*dWidth+5)*dQuantity));
     }
     public Result count(List<DetailDto> detailList, Paper paper){
-        int totalArea = 0;
+       double totalArea = 0;
         for (DetailDto detail: detailList) {
-            totalArea += (detail.getHeight() * detail.getWidth() + 5);
-            System.out.println(totalArea);
+            totalArea += ((detail.getHeight() * detail.getWidth() + 5)*detail.getQuantity());
         }
         Result result = new Result();
         result.setPaper(paper);
-        result.setWorker(null);
-        result.setQuantity(totalArea/(paper.getHeight()* paper.getWidth()));
+        result.setWorker(registrationService.currentUser());
+        double operation = totalArea / (paper.getHeight()* paper.getWidth());
+        System.out.println(totalArea + " total Area");
+        System.out.println("Paper area is "+ paper.getHeight()* paper.getWidth());
+        System.out.println(operation + " Operations");
+        if(operation > 0){
+            result.setQuantity((int)Math.ceil(operation));
+        }
+        else{
+            result.setQuantity(1);
+        }
         return result;
     }
     public List<Result>findAll(){

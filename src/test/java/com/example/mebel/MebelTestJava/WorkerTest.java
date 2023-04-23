@@ -17,7 +17,7 @@ public class WorkerTest {
         Long expectedId = 1L;
         String expectedUsername = "username";
         String expectedPassword = "password";
-        WORKER_ROLE expectedRole = WORKER_ROLE.ROLE_ADMIN;
+       String expectedRole = "ROLE_ADMIN";
 
         Worker worker = new Worker();
         worker.setId(expectedId);
@@ -40,7 +40,7 @@ public class WorkerTest {
         worker.setId(1L);
         worker.setUsername("username");
         worker.setPassword("password");
-        worker.setRole(WORKER_ROLE.ROLE_ADMIN);
+        worker.setRole("ROLE_ADMIN");
 
         String expectedString = "Worker(id=1, username=username, password=password, role=ROLE_ADMIN)";
 
