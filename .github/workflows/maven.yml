@@ -24,6 +24,6 @@ jobs:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
           ssh-known-hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
           remote-user: root
-          server-ip: 46.8.43.42:22
+          server-ip: 46.8.43.42:8080
           local-path: 'target/mebel2-0.0.1-SNAPSHOT.jar'
           remote-path: '/root/mebel2-0.0.1-SNAPSHOT.jar'
