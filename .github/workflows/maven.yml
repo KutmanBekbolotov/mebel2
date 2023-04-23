@@ -23,7 +23,8 @@ jobs:
       - name: Deploy to server
         uses: easingthemes/ssh-deploy@v2.1.5
         with:
-            ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
+#             ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
+            ssh_private_key: hgICp210
             remote_host: 46.8.43.42:8080
             remote_user: root
 #             remote_port: 8080 # (optional)
