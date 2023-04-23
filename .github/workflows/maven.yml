@@ -28,7 +28,7 @@ jobs:
             remote_user: root
 #             remote_port: 8080 # (optional)
             source: target/mebel2-0.0.1-SNAPSHOT.jar
-            target: /root/Programmer
+            target: /root
             args: -rltgoDzvO # (optional)
 
           
