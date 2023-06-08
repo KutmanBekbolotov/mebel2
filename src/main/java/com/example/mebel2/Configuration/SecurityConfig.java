@@ -1,5 +1,6 @@
 package com.example.mebel2.Configuration;
 
+import com.example.mebel2.Enums.WORKER_ROLE;
 import com.example.mebel2.Security.WorkerDetailsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -38,7 +39,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 cors().and()
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/api/v1/open/**","/swagger-ui/**","/swagger-ui.html", "/v3/api-docs/**", "/auth/**").permitAll()
+                .antMatchers("api/v1/authenticated/**", "/api/v1/open/**").hasAnyRole("ROLE_ADMIN","ROLE_WORKER")
+                .antMatchers("/swagger-ui/**","/swagger-ui.html", "/v3/api-docs/**", "/auth/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
 //                .formLogin().loginPage("/auth/login")
@@ -48,7 +50,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .logoutUrl("/logout")
                 .logoutSuccessUrl("/login")
                 .and()
-
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
                 http.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
@@ -56,7 +57,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Arrays.asList("http://localhost:3000","http://localhost:3001"));
+        configuration.setAllowedOrigins(Arrays.asList("http://localhost:3000","http://localhost:3001","http://46.8.43.42:3000"));
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE"));
         configuration.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type"));
         configuration.setAllowCredentials(true);
@@ -71,10 +72,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         auth.userDetailsService(workerDetailsService)
                 .passwordEncoder(encryptionConfig.getPasswordEncoder());
     }
-//    @Bean
-//    public PasswordEncoder getPasswordEncoder() {
-//        return new BCryptPasswordEncoder();
-//    }
     @Bean
     @Override
     public AuthenticationManager authenticationManagerBean() throws Exception {

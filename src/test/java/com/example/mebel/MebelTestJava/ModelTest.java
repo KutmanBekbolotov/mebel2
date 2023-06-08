@@ -1,3 +1,6 @@
+package com.example.mebel.MebelTestJava;
+
+import com.example.mebel2.Entities.Model;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -29,12 +32,13 @@ public class ModelTest{
         int width = 10;
         int height = 20;
         LocalDate date = LocalDate.now();
-        String expectedString = "Model(id=null, width=" 
-        							   + width + ", height=" 
-        							   + height + ", quantity=0, description=null, name=null, localDate=" 
-        							   + date + ")";
+        String expectedString = "Model(id=null, width="
+                + width + ", height="
+                + height + ", quantity=0, description=null, name=null, localDate="
+                + date + ", result=null"+")";
 
         Model model = new Model(width, height, date);
 
         Assertions.assertEquals(expectedString, model.toString());
+    }
 }

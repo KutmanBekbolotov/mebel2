@@ -12,10 +12,12 @@ import org.springframework.web.bind.annotation.*;
 public class ModelController {
    ModelService modelService;
     @GetMapping("/all")
+    @CrossOrigin(origins = {"http://localhost:3000", "http://localhost:3001","http://46.8.43.42:3000" ,"*"})
     public Page<Model> sizePage(@RequestParam(defaultValue = "0") int width, @RequestParam(defaultValue = "10") int height ){
         return modelService.getSizeByPage(width,height);
     }
     @PostMapping("/save/size")
+    @CrossOrigin(origins = {"http://localhost:3000", "http://localhost:3001","http://46.8.43.42:3000" ,"*"})
     public Model saved(@RequestParam int width, @RequestParam int height, @RequestParam int quantity){
        Model model = new Model();
         model.setWidth(width);

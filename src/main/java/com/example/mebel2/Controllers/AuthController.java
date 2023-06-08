@@ -39,7 +39,7 @@ public class AuthController {
     RegistrationService registrationService;
     @PostMapping("/registration")
 //    @CrossOrigin(origins = {"http://localhost:3000", "http://localhost:3001"})
-    @CrossOrigin(origins = {"http://localhost:3000", "http://localhost:3001", "*"})
+    @CrossOrigin(origins = {"http://localhost:3000", "http://localhost:3001","http://46.8.43.42:3000" ,"*"})
     @Operation(summary = "Registration", description = "This request creates a new user")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "successful operation",
@@ -68,7 +68,7 @@ public class AuthController {
 
     @PostMapping("/login")
 //    @CrossOrigin(origins = {"http://localhost:3000", "http://localhost:3001"})
-    @CrossOrigin(origins = {"http://localhost:3000", "http://localhost:3001", "*"})
+    @CrossOrigin(origins = {"http://localhost:3000", "http://localhost:3001","http://46.8.43.42:3000" ,"*"})
     @Operation(summary = "Login", description = "This request is used for logging in")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "successful operation",
